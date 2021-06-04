@@ -5,3 +5,9 @@ route = ""
 workers_dev = true
 webpack_config = "webpack.config.js"
 name = "unlock-with-erc20-worker"
+
+
+kv_namespaces = [ 
+        { binding = "SNIPPETS_STORAGE", preview_id = "3ce338cb9b2d475088966f3af0378a2a", id = "6dd0f240db274f84ab6cbbe1bed4fc73" },
+        { binding = "SnippetToKey", preview_id = "edfcf89c52a84f74a164966bbf6a651c", id = "add03665d73f42bfa0e32610b9a58e14" }
+]
