@@ -1,0 +1,7 @@
+type = "webpack"
+zone_id = "063c479cd9fda433c3ad29e0f262da27"
+account_id = "195b1138bd54ec5b646c32dbdeff8766"
+route = ""
+workers_dev = true
+webpack_config = "webpack.config.js"
+name = "unlock-with-erc20-worker"
