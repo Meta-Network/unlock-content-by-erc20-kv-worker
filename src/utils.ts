@@ -1,7 +1,7 @@
 export const ResponseWithJson = 
     (obj: Record<string, any>, 
+        status?: number,
         headers?: HeadersInit,
-        status?: number
     ) => new Response(
         JSON.stringify(obj),
         { 
