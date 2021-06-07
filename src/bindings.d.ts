@@ -8,4 +8,5 @@ declare global {
   const SnippetToKey: KVNamespace
   const SNIPPETS_STORAGE: KVNamespace
   const SNIPPETS_REQUIREMENT: KVNamespace
+  const SNIPPETS_OWNER: KVNamespace
 }
