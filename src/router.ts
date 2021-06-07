@@ -16,60 +16,65 @@ router.get("/", () => {
   return new Response("Hello, world! This is the root page of your Worker template.")
 })
 
-router.get('/SNIPPETS_STORAGE/:key', requireAuth, ({ params }) => {
+router.get('/SNIPPETS_STORAGE/:key', requireAuth, async ({ params }) => {
   const key = decodeURIComponent(params!.key)
-  const res = SNIPPETS_STORAGE.get(key)
+  const res = await SNIPPETS_STORAGE.get(key)
   return ResponseWithJson({ data: res })
 })
 
 router.put('/SNIPPETS_STORAGE/:key', requireAuth, async (req: ExtendsRequest) => {
   const data = await req.json()
   const key = decodeURIComponent(req.params!.key)
-  SNIPPETS_STORAGE.put(key, JSON.stringify(data));
+  await SNIPPETS_STORAGE.put(key, JSON.stringify(data));
   return ResponseWithJson({ success: true }, 201)
 })
 
 router.delete('/SNIPPETS_STORAGE/:key', requireAuth, async (req) => {
   const key = decodeURIComponent(req.params!.key)
-  SNIPPETS_STORAGE.delete(key);
+  await SNIPPETS_STORAGE.delete(key);
   return ResponseWithJson({ success: true }, 200)
 })
 
-router.get('/SNIPPETS_REQUIREMENT/:key', requireAuth, ({ params }) => {
+router.get('/SNIPPETS_REQUIREMENT/:key', requireAuth, async ({ params }) => {
   const key = decodeURIComponent(params!.key)
-  const res = SNIPPETS_REQUIREMENT.get(key)
-  return ResponseWithJson({ data: res })
+  console.info('key', key)
+  const res = await SNIPPETS_REQUIREMENT.get(key)
+  return ResponseWithJson({ data: res !== null ? JSON.parse(res) : null })
 })
 
 router.put('/SNIPPETS_REQUIREMENT/:key', requireAuth, async (req: ExtendsRequest) => {
   const data = await req.json()
   const key = decodeURIComponent(req.params!.key)
-  SNIPPETS_REQUIREMENT.put(key, JSON.stringify(data));
+  console.info('key', key)
+  console.info('data', data)
+  
+  await SNIPPETS_REQUIREMENT.put(key, JSON.stringify(data));
   return ResponseWithJson({ success: true }, 201)
 })
 
 router.delete('/SNIPPETS_REQUIREMENT/:key', requireAuth, async (req) => {
   const key = decodeURIComponent(req.params!.key)
-  SNIPPETS_REQUIREMENT.delete(key);
+  console.info('key', key)
+  await SNIPPETS_REQUIREMENT.delete(key);
   return ResponseWithJson({ success: true }, 200)
 })
 
-router.get('/SnippetToKey/:key', requireAuth, ({ params }) => {
+router.get('/SnippetToKey/:key', requireAuth, async ({ params }) => {
   const key = decodeURIComponent(params!.key)
-  const res = SnippetToKey.get(key)
+  const res = await SnippetToKey.get(key)
   return ResponseWithJson({ data: res })
 })
 
 router.put('/SnippetToKey/:key', requireAuth, async (req: ExtendsRequest) => {
   const data = await req.json()
   const key = decodeURIComponent(req.params!.key)
-  const res = SnippetToKey.put(key, data);
+  const res = await SnippetToKey.put(key, data);
   return ResponseWithJson({ data: res }, 201)
 })
 
 router.delete('/SnippetToKey/:key', requireAuth, async (req) => {
   const key = decodeURIComponent(req.params!.key)
-  const res = SnippetToKey.delete(key);
+  const res = await SnippetToKey.delete(key);
   return ResponseWithJson({ data: res }, 200)
 })
 
