@@ -10,6 +10,6 @@ name = "unlock-with-erc20-worker"
 kv_namespaces = [ 
         { binding = "SNIPPETS_STORAGE", preview_id = "3ce338cb9b2d475088966f3af0378a2a", id = "6dd0f240db274f84ab6cbbe1bed4fc73" },
         { binding = "SnippetToKey", preview_id = "edfcf89c52a84f74a164966bbf6a651c", id = "add03665d73f42bfa0e32610b9a58e14" },
-        { binding = "SNIPPETS_OWNER", preview_id = "f00a97bc6c834b80bab3c9e01527e1c4", id = "95590029b53146448f5b4704c91080c7" }
+        { binding = "SNIPPETS_OWNER", preview_id = "f00a97bc6c834b80bab3c9e01527e1c4", id = "95590029b53146448f5b4704c91080c7" },
         { binding = "SNIPPETS_REQUIREMENT", preview_id = "e87d6bf6ef5141a2b1915bd40dc62606", id = "85a73a200d7b4cc68206aa1b174f15b8" }
 ]

@@ -16,3 +16,8 @@ export type EncryptedSnippet = {
     iv: string;
     content: string;
 }
+
+export class ExtendsRequest extends Request {
+    params?: Record<string, any>;
+  }
+  
