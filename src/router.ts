@@ -35,6 +35,25 @@ router.delete('/SNIPPETS_STORAGE/:key', requireAuth, async (req) => {
   return ResponseWithJson({ success: true }, 200)
 })
 
+router.get('/SNIPPETS_REQUIREMENT/:key', requireAuth, ({ params }) => {
+  const key = decodeURIComponent(params!.key)
+  const res = SNIPPETS_REQUIREMENT.get(key)
+  return ResponseWithJson({ data: res })
+})
+
+router.put('/SNIPPETS_REQUIREMENT/:key', requireAuth, async (req: ExtendsRequest) => {
+  const data = await req.json()
+  const key = decodeURIComponent(req.params!.key)
+  SNIPPETS_REQUIREMENT.put(key, JSON.stringify(data));
+  return ResponseWithJson({ success: true }, 201)
+})
+
+router.delete('/SNIPPETS_REQUIREMENT/:key', requireAuth, async (req) => {
+  const key = decodeURIComponent(req.params!.key)
+  SNIPPETS_REQUIREMENT.delete(key);
+  return ResponseWithJson({ success: true }, 200)
+})
+
 router.get('/SnippetToKey/:key', requireAuth, ({ params }) => {
   const key = decodeURIComponent(params!.key)
   const res = SnippetToKey.get(key)
