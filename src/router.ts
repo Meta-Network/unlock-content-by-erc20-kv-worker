@@ -1,4 +1,5 @@
 import { Router } from 'itty-router'
+import { getOwnerOf, setOwnerOf } from './controller/owner'
 import {
   getRequirement,
   removeRequirement,
@@ -43,6 +44,12 @@ router.delete('/SNIPPETS_REQUIREMENT/:key', requireAuth, removeRequirement)
 router.get('/SnippetToKey/:key', requireAuth, getSecretKey)
 router.put('/SnippetToKey/:key', requireAuth, setSecretKeyFor)
 router.delete('/SnippetToKey/:key', requireAuth, removeSecretKeyFor)
+
+/**
+ * IPFS hash => 用户的钱包地址
+ */
+router.get('/ownerOf/:wallet', requireAuth, getOwnerOf)
+router.put('/ownerOf/:wallet', requireAuth, setOwnerOf)
 
 /*
   This is the last route we define, it will match anything that hasn't hit a route we've defined
